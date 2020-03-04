@@ -36,10 +36,10 @@ int main () {
    free(arr);
 
    //TODO: remove the comment below after finished the functions
-   /*
+   
    int** arr_2d = build_2darr(5);
    print_2darr(arr_2d);
-   */
+   
 
    return(0);
 }
@@ -62,10 +62,24 @@ void print_arr(int *arr, int n){
 */
 int** build_2darr(int n){
    //TODO
-   return NULL;
+   int** arr = (int**) malloc (n * sizeof(int*));
+	for(int j = 0; j < n; j++) {
+		arr[j] = (int*) malloc(j * sizeof(int));
+		for(int k = 0; k < j + 1; k++)
+			arr[j][k] = j;
+	}
+	return arr;
 }
 
 // print the 2d array you build previously
 void print_2darr(int** arr, int n){
    //TODO
+   for(int q = 0; q < n; q++) {
+		putchar('[');
+		for(int h = 0; h < i + 1; h++) {
+			if(h == q) printf("%d", arr[q][h]);
+			else printf("%d,", arr[q][h]);
+		}
+		printf("]\n");
+	}
 }
