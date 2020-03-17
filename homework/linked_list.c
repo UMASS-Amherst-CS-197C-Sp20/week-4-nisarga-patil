@@ -25,19 +25,43 @@ POINTER alloc(VALUE value) {
 // How do you count the items in a linked list?
 int list_size(POINTER start) {
   // TODO, does nothing right now.
-  return -1;
+  int total = 0;
+  for(POINTER i = start; i != NULL; i = i->next) {
+    total++;
+  }
+  return total;
+}
 }
 
 // How do you add an item to the end of a linked list?
 void push_back(POINTER start, VALUE value) {
   // TODO, does nothing right now.
-  return;
+  POINTER head = start;
+	if(head!=NULL){
+  	while(head->next != NULL){
+        	head = head->next;
+  	}
+  	head->next = alloc(value);
+  	}
+  	else{
+		head = alloc(value);
+ 	}	
+}
 }
 
 bool list_equals_array(POINTER list, double* array, int array_len) {
   if (list_size(list) != array_len) return false;
   // TODO, do this better!
-  return false;
+  
+  POINTER n = list;
+  for(int i=0; i<array_len; i++){
+    if(n->value!=*(array+i))
+      return false;
+    n = n->next;
+  }
+  return true;
+}
+
 }
 
 // Given a value and a list, alloc a new entry and put it on the front of this list.
@@ -54,7 +78,26 @@ POINTER push_front(VALUE value, POINTER list) {
 // the list becomes: 1->2->4->5
 bool remove_value(POINTER start, VALUE value){
   //TODO
-  return false;
+  POINTER prev = NULL;
+  n = start;
+  while(n!=NULL){
+    if(n->value == value) 
+      break;
+    prev = n;
+    n = n->next;
+  }
+  if(n==NULL) {
+    return false;
+  }
+  if(prev==NULL){
+    *start = *(start->next);
+  }
+  else {
+    prev->next = prev->next->next;
+  }
+  return true;
+}
+
 }
 
 // Given the start of a list, reverse the list and return the start after the reverse
@@ -62,7 +105,17 @@ bool remove_value(POINTER start, VALUE value){
 // the list becomes: 5->4->3->2->1
 POINTER reverse_list(POINTER start){
   //TODO
-  return NULL;
+  POINTER head = alloc(0);
+  n = start;
+  while(n!=NULL){
+    POINTER temp = n->next;
+    n->next = head->next;
+    head->next = n;
+    n = temp;
+  }
+  return head->next;
+}
+
 }
 
 // Given a list, take its first element off and put it in the free list.
