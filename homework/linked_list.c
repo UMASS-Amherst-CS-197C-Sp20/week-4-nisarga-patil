@@ -31,7 +31,6 @@ int list_size(POINTER start) {
   }
   return total;
 }
-}
 
 // How do you add an item to the end of a linked list?
 void push_back(POINTER start, VALUE value) {
@@ -47,7 +46,6 @@ void push_back(POINTER start, VALUE value) {
 		head = alloc(value);
  	}	
 }
-}
 
 bool list_equals_array(POINTER list, double* array, int array_len) {
   if (list_size(list) != array_len) return false;
@@ -62,7 +60,7 @@ bool list_equals_array(POINTER list, double* array, int array_len) {
   return true;
 }
 
-}
+
 
 // Given a value and a list, alloc a new entry and put it on the front of this list.
 POINTER push_front(VALUE value, POINTER list) {
@@ -79,7 +77,7 @@ POINTER push_front(VALUE value, POINTER list) {
 bool remove_value(POINTER start, VALUE value){
   //TODO
   POINTER prev = NULL;
-  n = start;
+  POINTER n = start;
   while(n!=NULL){
     if(n->value == value) 
       break;
@@ -98,7 +96,7 @@ bool remove_value(POINTER start, VALUE value){
   return true;
 }
 
-}
+
 
 // Given the start of a list, reverse the list and return the start after the reverse
 // for example: 1->2->3->4->5 reverse
@@ -106,7 +104,7 @@ bool remove_value(POINTER start, VALUE value){
 POINTER reverse_list(POINTER start){
   //TODO
   POINTER head = alloc(0);
-  n = start;
+  POINTER n = start;
   while(n!=NULL){
     POINTER temp = n->next;
     n->next = head->next;
@@ -116,7 +114,7 @@ POINTER reverse_list(POINTER start){
   return head->next;
 }
 
-}
+
 
 // Given a list, take its first element off and put it in the free list.
 POINTER free_front(POINTER list) {
