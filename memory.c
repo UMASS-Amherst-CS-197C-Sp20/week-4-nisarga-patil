@@ -38,7 +38,7 @@ int main () {
    //TODO: remove the comment below after finished the functions
    
    int** arr_2d = build_2darr(5);
-   print_2darr(arr_2d);
+   print_2darr(arr_2d,5);
    
 
    return(0);
@@ -74,11 +74,11 @@ int** build_2darr(int n){
 // print the 2d array you build previously
 void print_2darr(int** arr, int n){
    //TODO
-   for(int q = 0; q < n; q++) {
+   for(int a = 0; a < n; a++) {
 		putchar('[');
-		for(int h = 0; h < i + 1; h++) {
-			if(h == q) printf("%d", arr[q][h]);
-			else printf("%d,", arr[q][h]);
+		for(int h = 0; h < a + 1; h++) {
+			if(h == a) printf("%d", arr[a][h]);
+			else printf("%d,", arr[a][h]);
 		}
 		printf("]\n");
 	}
